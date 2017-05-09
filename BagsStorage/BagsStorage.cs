@@ -25,14 +25,14 @@ namespace BagsStorage
         public const string DefaultDataDirectory = "data";
         public static List<string> BagItemTypes = new List<string>()
         {
-            "Взуття", "Штани", "Сорочки", "Боді", "Білизна", "Футболки", "Шорти", "Спідниці", "Сукні",
-            "Светри", "Куртки", "Пальто", "Костюми", "Тканина", "Інше"
+            "Взуття", "Штани", "Сорочки", "Боді", "Білизна", "Футболки", "Футболки довгий рукав", "Шорти", "Спідниці", "Сукні",
+            "Светри", "Куртки", "Пальто", "Костюми", "Тканина", "Колготи", "Піджаки", "Інше"
         };
         public static Dictionary<string, List<string>> BagItemSizes = new Dictionary<string, List<string>>()
         {
             { "Взуття", new List<string> { "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42+", } },
-            { "Ріст", new List<string> { "50", "60", "70", "80", "90", "100", "110", "120", "130", "140", "150", "160", "170", "180", "190", } },
-            { "Вік", new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", } },
+            { "Ріст", new List<string> { "50", "60", "70", "80", "90", "100", "110", "120", "130", "140", "150", "160", "170", "180", "190+", } },
+            { "Вік", new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18+", } },
         };
         public BagsStorage(BagsStorageEventHandler bagStorageEventHandler)
         {
@@ -85,9 +85,23 @@ namespace BagsStorage
             this.SaveToFile();
             this.LoadFromFile();
         }
-        public void RemoveBag(int Id)
+        public void ChangeBag(int id, string name)
         {
-            this.Bags.RemoveAll(i=>i.Id == Id);
+            Bag bagItem = this.Bags.Where(i => i.Id == id).First();
+            bagItem.Name = name;
+            this.SaveToFile();
+            this.LoadFromFile();
+        }
+        public void ChangeBag(Bag bag, string name)
+        {
+            Bag bagItem = this.Bags.Where(i => i.Id == bag.Id).First();
+            bagItem.Name = name;
+            this.SaveToFile();
+            this.LoadFromFile();
+        }
+        public void RemoveBag(int id)
+        {
+            this.Bags.RemoveAll(i=>i.Id == id);
             this.SaveToFile();
             this.LoadFromFile();
         }
@@ -181,12 +195,14 @@ namespace BagsStorage
         }
         public void UpdateBagItem(int id, string type, string sizeType, string sizeFrom, string sizeTo, string details = null)
         {
-            BagItem bagItem = this.ItemsArray.ToList().Where(i => i.Id == id).First();
+            var temp = this.ItemsArray.ToList();
+            BagItem bagItem = temp.Where(i => i.Id == id).First();
             bagItem.Type = type;
             bagItem.SizeType = sizeType;
             bagItem.SizeFrom = sizeFrom;
             bagItem.SizeTo = sizeTo;
             bagItem.Details = details;
+            this.ItemsArray = temp.ToArray();
         }
     }
 }

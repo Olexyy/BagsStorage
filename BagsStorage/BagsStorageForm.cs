@@ -50,6 +50,10 @@ namespace BagsStorage
         {
             this.BagsStorage.RemoveBag(bag);
         }
+        private void ChangeBag(Bag bag, string name)
+        {
+            this.BagsStorage.ChangeBag(bag, name);
+        }
         private void AddBag(string name)
         {
             this.BagsStorage.AddBag(name);
@@ -140,5 +144,21 @@ namespace BagsStorage
             }
         }
 
+        private void buttonChangeBag_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(this.textBoxNewBagName.Text) &&
+                this.textBoxNewBagName.Text != "назва мішка...")
+            {
+                if (this.listViewBags.SelectedItems.Count == 1)
+                {
+                    this.ChangeBag(this.listViewBags.SelectedItems[0].Tag as Bag, this.textBoxNewBagName.Text);
+                    this.textBoxNewBagName.Text = "назва мішка...";
+                }
+                else
+                    this.toolStripStatusMessage.Text = "Оберіть мішок.";
+            }
+            else
+                this.toolStripStatusMessage.Text = "Введіть назву нового мішка.";
+        }
     }
 }

@@ -47,6 +47,7 @@
             this.buttonUpdateItem = new System.Windows.Forms.Button();
             this.groupBoxBottom = new System.Windows.Forms.GroupBox();
             this.textBoxDetails = new System.Windows.Forms.TextBox();
+            this.buttonChangeBag = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBoxTop.SuspendLayout();
             this.groupBoxBottom.SuspendLayout();
@@ -58,7 +59,7 @@
             this.columnBags});
             this.listViewBags.Location = new System.Drawing.Point(4, 4);
             this.listViewBags.Name = "listViewBags";
-            this.listViewBags.Size = new System.Drawing.Size(195, 319);
+            this.listViewBags.Size = new System.Drawing.Size(195, 343);
             this.listViewBags.TabIndex = 0;
             this.listViewBags.UseCompatibleStateImageBehavior = false;
             this.listViewBags.View = System.Windows.Forms.View.Details;
@@ -73,7 +74,7 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusMessage});
-            this.statusStrip.Location = new System.Drawing.Point(0, 326);
+            this.statusStrip.Location = new System.Drawing.Point(0, 359);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(679, 22);
             this.statusStrip.TabIndex = 1;
@@ -90,7 +91,7 @@
             this.columnBagDetails});
             this.listViewBagDetails.Location = new System.Drawing.Point(203, 4);
             this.listViewBagDetails.Name = "listViewBagDetails";
-            this.listViewBagDetails.Size = new System.Drawing.Size(282, 319);
+            this.listViewBagDetails.Size = new System.Drawing.Size(282, 343);
             this.listViewBagDetails.TabIndex = 2;
             this.listViewBagDetails.UseCompatibleStateImageBehavior = false;
             this.listViewBagDetails.View = System.Windows.Forms.View.Details;
@@ -121,7 +122,7 @@
             // 
             // buttonRemoveBag
             // 
-            this.buttonRemoveBag.Location = new System.Drawing.Point(6, 74);
+            this.buttonRemoveBag.Location = new System.Drawing.Point(6, 103);
             this.buttonRemoveBag.Name = "buttonRemoveBag";
             this.buttonRemoveBag.Size = new System.Drawing.Size(170, 23);
             this.buttonRemoveBag.TabIndex = 5;
@@ -131,12 +132,13 @@
             // 
             // groupBoxTop
             // 
+            this.groupBoxTop.Controls.Add(this.buttonChangeBag);
             this.groupBoxTop.Controls.Add(this.buttonRemoveBag);
             this.groupBoxTop.Controls.Add(this.buttonAddBag);
             this.groupBoxTop.Controls.Add(this.textBoxNewBagName);
             this.groupBoxTop.Location = new System.Drawing.Point(491, 4);
             this.groupBoxTop.Name = "groupBoxTop";
-            this.groupBoxTop.Size = new System.Drawing.Size(184, 108);
+            this.groupBoxTop.Size = new System.Drawing.Size(184, 132);
             this.groupBoxTop.TabIndex = 10;
             this.groupBoxTop.TabStop = false;
             this.groupBoxTop.Text = "Мішки :";
@@ -146,7 +148,7 @@
             this.comboBoxBagItemType.FormattingEnabled = true;
             this.comboBoxBagItemType.Location = new System.Drawing.Point(6, 19);
             this.comboBoxBagItemType.Name = "comboBoxBagItemType";
-            this.comboBoxBagItemType.Size = new System.Drawing.Size(168, 21);
+            this.comboBoxBagItemType.Size = new System.Drawing.Size(170, 21);
             this.comboBoxBagItemType.TabIndex = 6;
             this.comboBoxBagItemType.Text = "-Тип-";
             // 
@@ -178,7 +180,7 @@
             // 
             // buttonAddBagItem
             // 
-            this.buttonAddBagItem.Location = new System.Drawing.Point(8, 117);
+            this.buttonAddBagItem.Location = new System.Drawing.Point(6, 117);
             this.buttonAddBagItem.Name = "buttonAddBagItem";
             this.buttonAddBagItem.Size = new System.Drawing.Size(170, 23);
             this.buttonAddBagItem.TabIndex = 14;
@@ -216,7 +218,7 @@
             this.groupBoxBottom.Controls.Add(this.comboBoxSizesTypes);
             this.groupBoxBottom.Controls.Add(this.buttonAddBagItem);
             this.groupBoxBottom.Controls.Add(this.comboBoxSizeFrom);
-            this.groupBoxBottom.Location = new System.Drawing.Point(491, 118);
+            this.groupBoxBottom.Location = new System.Drawing.Point(491, 142);
             this.groupBoxBottom.Name = "groupBoxBottom";
             this.groupBoxBottom.Size = new System.Drawing.Size(184, 205);
             this.groupBoxBottom.TabIndex = 18;
@@ -228,15 +230,25 @@
             this.textBoxDetails.Location = new System.Drawing.Point(6, 73);
             this.textBoxDetails.Multiline = true;
             this.textBoxDetails.Name = "textBoxDetails";
-            this.textBoxDetails.Size = new System.Drawing.Size(168, 38);
+            this.textBoxDetails.Size = new System.Drawing.Size(170, 38);
             this.textBoxDetails.TabIndex = 17;
             this.textBoxDetails.Text = "- Деталі -";
+            // 
+            // buttonChangeBag
+            // 
+            this.buttonChangeBag.Location = new System.Drawing.Point(6, 74);
+            this.buttonChangeBag.Name = "buttonChangeBag";
+            this.buttonChangeBag.Size = new System.Drawing.Size(170, 23);
+            this.buttonChangeBag.TabIndex = 6;
+            this.buttonChangeBag.Text = "Змінити мішок";
+            this.buttonChangeBag.UseVisualStyleBackColor = true;
+            this.buttonChangeBag.Click += new System.EventHandler(this.buttonChangeBag_Click);
             // 
             // BagsStorageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 348);
+            this.ClientSize = new System.Drawing.Size(679, 381);
             this.Controls.Add(this.listViewBagDetails);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.listViewBags);
@@ -277,6 +289,7 @@
         private System.Windows.Forms.Button buttonUpdateItem;
         private System.Windows.Forms.GroupBox groupBoxBottom;
         private System.Windows.Forms.TextBox textBoxDetails;
+        private System.Windows.Forms.Button buttonChangeBag;
     }
 }
 
